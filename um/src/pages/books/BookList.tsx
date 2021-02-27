@@ -14,7 +14,7 @@ function bookList(props: any) {
 
   const {listBook = []} = props;
 
-  const addBook = (name: string) => {
+  const addBook = (name: any) => {
     const book = {name: name};
     props.addBooks(book);
     setInputBook('')
