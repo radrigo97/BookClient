@@ -1,6 +1,6 @@
 import {Effect, Reducer} from 'umi';
 import axios from "axios";
-import {QueryCreateBooks, queryGetBooks} from './query';
+import {QueryCreateBooks} from './query';
 
 export interface IState {}
 
@@ -23,6 +23,12 @@ export interface IModel {
 // }).then(res => res.data)
 //   .catch(error => error)
 
+const post = (url: string) => axios({url: `http://localhost:5000/${url}`, method: 'POST',
+}).then(res=>res.data)
+  .catch(err=>err);
+
+const callGetBooks = () => post('book/search');
+
 
 
 
@@ -33,11 +39,11 @@ const Model : IModel = {
   effects: {
 
     *getBooks(_,{call, put}) {
-     const data = yield call(queryGetBooks)
+     const data = yield call(callGetBooks)
       yield put({type: 'save', payload: {list:data} })
     },
 
-    *create( payload , { call, put }) {
+    *create( {payload} , { call, put }) {
       console.log(payload, 'payload create')
       const createResult  = yield call(QueryCreateBooks,payload);
       if (!(createResult instanceof Error)) {

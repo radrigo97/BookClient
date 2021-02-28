@@ -2,7 +2,7 @@ import {connect} from 'umi';
 import 'antd/dist/antd.css';
 import React, {useEffect, useState} from "react";
 import styles from './book.less';
-import { Input } from 'antd';
+import { Input, Form } from 'antd';
 import { Button } from 'antd';
 
 
@@ -28,7 +28,7 @@ function bookList(props: any) {
     <div className={styles.listItem}>
       <ul className={styles.list}>
         <div className={styles.formsButtons}>
-          <Input placeholder="Basic usage" value={inputBook} onChange={e => setInputBook(e.target.value)}/>
+          <input value={inputBook} onChange={(e)=>setInputBook(e.target.value)} placeholder={'Insert a new book'}/>
           <Button className={styles.addTask} onClick={() => addBook(inputBook)}>Add Task</Button>
         </div>
         {

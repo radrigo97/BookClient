@@ -1,22 +1,5 @@
 import axios from 'axios';
 
-
-
-export async function queryGetBooks(): Promise<any> {
-  return axios({
-    method: 'POST',
-    url: `http://localhost:5000/book/search`,
-    data:{},
-  })
-    .then((res) => {
-      return res.data;
-    })
-    .catch((error) => {
-      return error;
-    });
-}
-
-
 export async function QueryCreateBooks(payload: any): Promise<any> {
   console.log(payload, 'yes')
   return axios({
@@ -33,3 +16,20 @@ export async function QueryCreateBooks(payload: any): Promise<any> {
       return error;
     });
 }
+
+
+// export async function queryGetBooks(): Promise<any> {
+//   return axios({
+//     method: 'POST',
+//     url: `http://localhost:5000/book/search`,
+//     data:{},
+//   })
+//     .then((res) => {
+//       return res.data;
+//     })
+//     .catch((error) => {
+//       return error;
+//     });
+// }
+
+
